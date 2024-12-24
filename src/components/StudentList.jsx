@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchStudentsByCohortAndCourse, loadStudents } from "../redux/studentSlice";
-import { MdArrowDownward, MdPlusOne } from "react-icons/md";
 import { LuPlus } from "react-icons/lu";
 import { FaAngleDown } from "react-icons/fa";
+import courseProfile from "../assets/profile.png";
 
 const StudentList = () => {
   const dispatch = useDispatch();
@@ -103,7 +103,7 @@ const StudentList = () => {
         </div>
         <Link
           to="/add-student"
-          className="w-fit bg-[#E9EDF1] text-[#425470] font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200 flex items-center justify-center space-x-2">
+          className="w-fit bg-[#E9EDF1] text-[#425470] font-bold py-2 px-4 rounded-lg hover:bg-[#E9EDF1] transition duration-200 flex items-center justify-center space-x-2">
           <LuPlus size={20} />
           <span>Add New Student</span>
         </Link>
@@ -127,8 +127,9 @@ const StudentList = () => {
               {students.map((student) => (
                 <tr
                   key={student.id}
-                  className="border-b last:border-none hover:bg-gray-50 cursor-pointer"
+                  className="border-b last:border-none hover:bg-gray-100 cursor-pointer"
                   onClick={() => handleRowClick(student.id)}
+                    title="Click to modify the record"
                 >
                   <td className="px-4 py-2">{student.name}</td>
                   <td className="px-4 py-2">{student.cohort}</td>
@@ -140,7 +141,7 @@ const StudentList = () => {
                             key={index}
                             className="flex items-center bg-gray-100 text-sm text-gray-600 px-2 py-1 rounded-md"
                           >
-                            {course}
+                            <img src={courseProfile} width={20} alt="" className="mr-1" />{course}
                           </span>
                         ))
                       ) : (

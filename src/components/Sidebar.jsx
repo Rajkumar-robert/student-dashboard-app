@@ -20,18 +20,18 @@ const Sidebar = () => {
 
         <div className="flex flex-col space-y-6">
           <Link
-            to="/"
+            to="/dashboard"
             className={`flex items-center space-x-4 p-2 rounded-md cursor-pointer text-black ${
-              isActive("/") ? "bg-gray-200" : "hover:bg-gray-100"
+              isActive("/dashboard") ? "bg-gray-200" : "hover:bg-gray-100"
             }`}
           >
             <RiDashboard3Line size={24} />
             <span className="text-lg font-medium">Dashboard</span>
           </Link>
           <Link
-            to="/Students"
+            to="/"
             className={`flex items-center space-x-4 p-2 rounded-md cursor-pointer text-black ${
-              isActive("/Students") ? "bg-gray-200" : "hover:bg-gray-100"
+              isActive("/") ? "bg-gray-200" : "hover:bg-gray-100"
             }`}
           >
             <RiBookReadFill size={24} />

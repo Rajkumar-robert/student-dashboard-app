@@ -2,6 +2,7 @@ import { supabase } from './supabase';
 
 // Create new student
 export const createStudent = async (studentData) => {
+  console.log("Creating student: ", studentData); // Debugging purpose
   const { data, error } = await supabase.from('StudentTable').insert([studentData]);
   if (error) throw error;
   return data;

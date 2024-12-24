@@ -3,7 +3,7 @@ import { createStudent } from "../services/dbFunctions";
 
 const AddStudent = () => {
   const [formData, setFormData] = useState({
-    id: "",
+   
     name: "",
     cohort: "",
     courses: "",
@@ -27,14 +27,14 @@ const AddStudent = () => {
       // Format dateJoined and lastLogin without fractional seconds
       const formattedData = {
         ...formData,
-        courses: formData.courses.split(",").map((course) => course.trim()), // Convert courses string to array
+        courses: formData.courses,
         dateJoined: new Date().toISOString().split(".")[0],
         lastLogin: new Date().toISOString().split(".")[0], // Remove fractional seconds
       };
       await createStudent(formattedData);
       setMessage("Student added successfully!");
       setFormData({
-        id: "",
+       
         name: "",
         cohort: "",
         courses: "",
@@ -54,18 +54,6 @@ const AddStudent = () => {
         onSubmit={handleSubmit}
         className="bg-white p-6 shadow-md rounded-lg max-w-md mx-auto"
       >
-        <div className="mb-4">
-          <label className="block text-gray-700 font-medium mb-2">ID</label>
-          <input
-            type="text"
-            name="id"
-            value={formData.id}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-          />
-        </div>
-
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-2">Name</label>
           <input

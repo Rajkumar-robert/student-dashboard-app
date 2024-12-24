@@ -6,13 +6,13 @@ import Navbar from './components/Navbar';
 import StudentList from './components/StudentList';
 import EditStudent from './components/EditStudent';
 import AddStudent from './components/AddStudent';
-import pic from './t.png'
 
-const Dashboard = () => <div className="p-4"><img src={pic} width={1200}/></div>;
-const Chapter = () => <div className="p-4">Chapter Details Section.</div>;
-const Help = () => <div className="p-4">Need Help? Contact Support.</div>;
-const Reports = () => <div className="p-4">View Reports Here.</div>;
-const Settings = () => <div className="p-4">Adjust Your Settings Here.</div>;
+
+const Dashboard = () => <div className="p-4 flex justify-between items-center font-medium text-xl"><h1>Welcome to Student Dashboard!!</h1></div>;
+const Chapter = () => <div className="p-4 flex justify-between items-center font-medium text-xl"><h1>Chapter Details Section.</h1></div>;
+const Help = () => <div className="p-4 flex justify-between items-center font-medium text-xl"><h1>Need Help? Contact Support.</h1></div>;
+const Reports = () => <div className="p-4 flex justify-between items-center font-medium text-xl"><h1>View Reports Here.</h1></div>;
+const Settings = () => <div className="p-4 flex justify-between items-center font-medium text-xl"><h1>Adjust Your Settings Here.</h1></div>;
 
 function App() {
   return (
@@ -27,8 +27,8 @@ function App() {
           <Navbar />
           <div className="flex-1 px-6 pt-4">
             <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/students" element={<StudentList />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/" element={<StudentList />} />
               <Route path="/edit/:id" element={<EditStudent />} />
               <Route path="/add-student" element={<AddStudent />} />
               <Route path="/chapters" element={<Chapter />} />

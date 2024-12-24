@@ -45,7 +45,7 @@ const EditStudent = () => {
     try {
       const formattedData = {
         ...formData,
-        courses: formData.courses.split(",").map((course) => course.trim()), // Convert string to array
+        courses: formData.courses,
         dateJoined: new Date(formData.dateJoined).toISOString(), // Format date to ISO
       };
       await updateStudent(formData.id, formattedData);
@@ -60,17 +60,17 @@ const EditStudent = () => {
     try {
       await deleteStudent(formData.id);
       setMessage("Student deleted successfully!");
-      navigate("/students");
+      navigate("/");
     } catch (error) {
       console.error("Error deleting student:", error);
       setMessage("Failed to delete student. Please try again.");
     }
   };
 
-  if (!formData.id) {
+  // if (!formData.id) {
 
-    return <p className="text-center text-gray-600">Loading student data...</p>;
-  }
+  //   return <p className="text-center text-gray-600">Loading student data...</p>;
+  // }
 
 
   return (
@@ -80,16 +80,7 @@ const EditStudent = () => {
         onSubmit={handleSubmit}
         className="bg-white p-6 shadow-md rounded-lg max-w-md mx-auto"
       >
-        <div className="mb-4">
-          <label className="block text-gray-700 font-medium mb-2">ID</label>
-          <input
-            type="text"
-            name="id"
-            value={formData.id}
-            disabled
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-100 focus:outline-none"
-          />
-        </div>
+       
 
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-2">Name</label>
@@ -141,18 +132,7 @@ const EditStudent = () => {
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 font-medium mb-2">Status</label>
-          <select
-            name="status"
-            value={formData.status}
-            disabled
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-          >
-            <option value={true}>Active</option>
-            <option value={false}>Inactive</option>
-          </select>
-        </div>
+        
 
         <button
           type="submit"
