@@ -42,11 +42,11 @@ export const fetchByCohortAndCourse = async (cohort, course) => {
 };
 
 
-// Update student data
 export const updateStudent = async (id, updatedData) => {
-  const { data, error } = await supabase.from('StudentTable').update(updatedData).eq('id', id);
-  if (error) throw error;
-  return data;
+  console.log("Updating student: ", id, updatedData); // Debugging purpose
+  const content = await supabase.from('StudentTable').update(updatedData).eq('id', id);
+   if (content.error) throw content.error;
+  return content;
 };
 
 // Delete student

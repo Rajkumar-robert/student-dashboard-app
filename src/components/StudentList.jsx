@@ -28,11 +28,11 @@ const StudentList = () => {
       dispatch(loadStudents());
     }
   }, [dispatch, cohort, course]);
-
+  
   const handleRowClick = (studentId) => {
-    navigate(`/edit/${studentId}`);
+    navigate(`/edit?studentId=${studentId}`);
   };
-
+  
   const handleCohortChange = (e) => {
     setCohort(e.target.value);
   };

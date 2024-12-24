@@ -28,7 +28,12 @@ export const modifyStudent = createAsyncThunk(
   'students/update',
   async ({ id, updatedData }, { rejectWithValue }) => {
     try {
-      return await updateStudent(id, updatedData);
+      console.log('thunk Updating student: ', id, updatedData); 
+      const {status} = await updateStudent(id, updatedData);
+      console.log('status: ', status);
+      if(status === 204) {
+        return updatedData;
+      }
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -122,6 +127,7 @@ const studentSlice = createSlice({
       })
       .addCase(modifyStudent.fulfilled, (state, action) => {
         state.updating = false;
+        console.log('fulfilled Updating student: ', action); // Debugging purpose
         const index = state.data.findIndex((student) => student.id === action.payload.id);
         if (index !== -1) {
           state.data[index] = action.payload;

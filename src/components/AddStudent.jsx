@@ -1,23 +1,38 @@
 import React, { useState } from "react";
-import { createStudent } from "../services/dbFunctions";
+import { useDispatch } from "react-redux"; 
+import { addStudent, loadStudents } from "../redux/studentSlice";
+import { useNavigate } from "react-router-dom";
 
 const AddStudent = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-   
     name: "",
     cohort: "",
     courses: "",
     dateJoined: "",
     status: true,
   });
-
   const [message, setMessage] = useState("");
+
+  const courseList = [
+    "CBSE 9 Math",
+    "CBSE 9 Science",
+    "CBSE 9 English",
+    "CBSE 10 Math",
+    "CBSE 10 Science",
+    "CBSE 10 English",
+    "CBSE 11 Math",
+    "CBSE 11 Science",
+    "CBSE 11 English",
+  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+      
     }));
   };
 
@@ -31,16 +46,18 @@ const AddStudent = () => {
         dateJoined: new Date().toISOString().split(".")[0],
         lastLogin: new Date().toISOString().split(".")[0], // Remove fractional seconds
       };
-      await createStudent(formattedData);
+      await dispatch(addStudent(formattedData)).unwrap();
       setMessage("Student added successfully!");
       setFormData({
-       
         name: "",
         cohort: "",
         courses: "",
         dateJoined: "",
         status: true,
       });
+      // dispatch(loadStudents());
+      // navigate("/");
+
     } catch (error) {
       console.error("Error adding student:", error);
       setMessage("Failed to add student. Please try again.");
@@ -84,17 +101,7 @@ const AddStudent = () => {
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-2">Courses</label>
           <div className="flex flex-col space-y-2">
-            {[
-              "CBSE 9 Math",
-              "CBSE 9 Science",
-              "CBSE 9 English",
-              "CBSE 10 Math",
-              "CBSE 10 Science",
-              "CBSE 10 English",
-              "CBSE 11 Math",
-              "CBSE 11 Science",
-              "CBSE 11 English",
-            ].map((course) => (
+            {courseList.map((course) => (
               <label key={course} className="flex items-center space-x-2">
                 <input
                   type="checkbox"
@@ -105,8 +112,8 @@ const AddStudent = () => {
                     const selectedCourse = e.target.value;
                     setFormData((prev) => {
                       const courses = prev.courses.includes(selectedCourse)
-                        ? prev.courses.filter((c) => c !== selectedCourse) // Remove if already selected
-                        : [...prev.courses, selectedCourse]; // Add if not already selected
+                        ? prev.courses.filter((c) => c !== selectedCourse)
+                        : [...prev.courses, selectedCourse]; 
                       return {
                         ...prev,
                         courses,

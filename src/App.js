@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
@@ -29,7 +28,7 @@ function App() {
             <Routes>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/" element={<StudentList />} />
-              <Route path="/edit/:id" element={<EditStudent />} />
+              <Route path="/edit" element={<EditStudent />} />
               <Route path="/add-student" element={<AddStudent />} />
               <Route path="/chapters" element={<Chapter />} />
               <Route path="/help" element={<Help />} />
