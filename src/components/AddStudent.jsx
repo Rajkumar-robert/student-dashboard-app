@@ -55,7 +55,7 @@ const AddStudent = () => {
         dateJoined: "",
         status: true,
       });
-      // dispatch(loadStudents());
+       dispatch(loadStudents());
       // navigate("/");
 
     } catch (error) {
