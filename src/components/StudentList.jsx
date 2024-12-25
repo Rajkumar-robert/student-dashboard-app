@@ -64,7 +64,7 @@ const StudentList = () => {
   }
 
   return (
-    <div className="p-6 min-h-screen bg-white rounded-lg ">
+    <div className="p-6 overflow-x-scroll bg-white rounded-lg ">
       <div className="flex justify-between items-center mb-8">
         <div className="flex gap-4 mb-4 justify-center items-center">
         <div className="flex justify-between items-center space-x-3 bg-[#E9EDF1] font-bold px-4 py-2 rounded-lg ">

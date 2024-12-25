@@ -59,6 +59,7 @@ const EditStudent = () => {
       console.log("Updated data: ", updatedData);
       await dispatch(modifyStudent({ id,updatedData })).unwrap(); // Dispatch Redux thunk
       setMessage("Student updated successfully!");
+      alert("Student updated successfully!");
       dispatch(loadStudents());
       // navigate("/");
     } catch (error) {
@@ -76,6 +77,7 @@ const EditStudent = () => {
         cohort: "",
         courses: [],
       });
+    alert("Student deleted successfully!");
       // navigate("/");
     } catch (error) {
       console.error("Error deleting student:", error);

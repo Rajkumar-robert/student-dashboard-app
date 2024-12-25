@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {  MdSearch } from 'react-icons/md';
+import {  MdClose, MdMenu, MdSearch } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { fetchStudentsByCohortAndCourse, loadStudents } from '../redux/studentSlice';
 import profile from '../assets/profile.png';
@@ -8,7 +8,7 @@ import { RiMessage2Line } from 'react-icons/ri';
 import { VscSettings } from 'react-icons/vsc';
 import { PiBellBold } from 'react-icons/pi';
 
-const Navbar = () => {
+const Navbar = ({setIsOpened,isOpened}) => {
   const [searchItem, setSearchItem] = React.useState('');
   const dispatch = useDispatch();
 
@@ -21,11 +21,19 @@ const Navbar = () => {
     else{
       dispatch(loadStudents());
     }
-  }, [searchItem]);
-
+  }, [dispatch,searchItem]);
+  
   return (
-    <div className="mt-4 w-full flex justify-between items-center h-16 px-4">
+    <div className="fixed md:relative bg-white md:bg-transparent md:mt-4 w-full flex justify-between items-center h-16 px-4">
       {/* Search Bar */}
+      <button
+      className="md:hidden z-50 p-2 md:p-0 text-2xl bg-gray-100 rounded-full shadow focus:outline-none focus:ring-2 focus:ring-blue-500"
+      onClick={() => setIsOpened(!isOpened)}
+      aria-expanded="false"
+      aria-label="Open menu"
+    >
+      {!isOpened?<MdClose/>:<MdMenu />}
+    </button>
       <div className="relative w-1/2 ml-2">
         <input
           value={searchItem}
@@ -39,7 +47,7 @@ const Navbar = () => {
 
       {/* Icons and Profile Section */}
       <div className="flex gap-4 w-1/2 px-4 justify-end items-center space-x-4">
-        <div className="flex gap-4 justify-center items-center space-x-4">
+        <div className="md:flex gap-4 justify-center items-center space-x-4 hidden">
           <IoMdHelpCircleOutline className="text-gray-500 text-2xl" />
           <RiMessage2Line className="text-gray-500 text-2xl" />
           <VscSettings className="text-gray-500 text-2xl" />
@@ -47,7 +55,7 @@ const Navbar = () => {
         </div>
         <div className="flex gap-4 justify-center items-center">
           <img src={profile} alt="Profile" width={40} className="rounded-md" />
-          <h1 className='font-semibold'>Adline H. Dancy</h1>
+          <h1 className='font-semibold md:block hidden'>Adline H. Dancy</h1>
         </div>
       </div>
     </div>
