@@ -24,10 +24,10 @@ const Navbar = ({setIsOpened,isOpened}) => {
   }, [dispatch,searchItem]);
   
   return (
-    <div className="fixed md:relative bg-white md:bg-transparent md:mt-4 w-full flex justify-between items-center h-16 px-4">
+    <div className="fixed md:relative bg-white md:bg-transparent md:mt-4 w-screen md:w-full flex justify-between items-center h-16 px-4">
       {/* Search Bar */}
       <button
-      className="md:hidden z-50 p-2 md:p-0 text-2xl bg-gray-100 rounded-full shadow focus:outline-none focus:ring-2 focus:ring-blue-500"
+      className="md:hidden z-50 p-2 md:p-0 text-2xl bg-gray-100 rounded-full shadow"
       onClick={() => setIsOpened(!isOpened)}
       aria-expanded="false"
       aria-label="Open menu"
