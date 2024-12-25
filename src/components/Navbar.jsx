@@ -24,29 +24,29 @@ const Navbar = ({setIsOpened,isOpened}) => {
   }, [dispatch,searchItem]);
   
   return (
-    <div className="fixed md:relative bg-white md:bg-transparent md:mt-4 w-screen md:w-full flex justify-between items-center h-16 px-4">
+    <div className="fixed md:relative bg-white md:bg-transparent md:mt-4 flex justify-between items-center h-16 px-2 md:px-4">
       {/* Search Bar */}
       <button
-      className="md:hidden z-50 p-2 md:p-0 text-2xl bg-gray-100 rounded-full shadow"
+      className="md:hidden z-50 p-2 md:p-0 text-2xl bg-gray-100 rounded-full"
       onClick={() => setIsOpened(!isOpened)}
       aria-expanded="false"
       aria-label="Open menu"
     >
-      {!isOpened?<MdClose/>:<MdMenu />}
+      {isOpened?<MdClose/>:<MdMenu />}
     </button>
-      <div className="relative w-1/2 ml-2">
+      <div className="relative md:w-1/2 ml-2">
         <input
           value={searchItem}
           onChange={(e) => setSearchItem(e.target.value)}
           type="text"
           placeholder="Search by course: CBSE 9"
-          className="w-full bg-white text-[#425470] font-medium px-4 py-2 pl-10 rounded-lg focus:outline-none"
+          className="w-full bg-white text-[#425470] md:border-0 border-2 border-[#42547029] font-medium px-4 py-2 pl-10 rounded-lg focus:outline-none"
         />
         <MdSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#425470] text-xl" />
       </div>
 
       {/* Icons and Profile Section */}
-      <div className="flex gap-4 w-1/2 px-4 justify-end items-center space-x-4">
+      <div className="flex gap-4 md:w-1/2 md:px-4 justify-end items-center space-x-4">
         <div className="md:flex gap-4 justify-center items-center space-x-4 hidden">
           <IoMdHelpCircleOutline className="text-gray-500 text-2xl" />
           <RiMessage2Line className="text-gray-500 text-2xl" />

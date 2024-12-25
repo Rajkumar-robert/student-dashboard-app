@@ -64,9 +64,9 @@ const StudentList = () => {
   }
 
   return (
-    <div className="p-6 overflow-x-scroll bg-white rounded-lg ">
-      <div className="flex justify-between items-center mb-8">
-        <div className="flex gap-4 mb-4 justify-center items-center">
+    <div className="p-0 md:p-6 bg-white rounded-lg w-screen md:w-full">
+      <div className="px-2 md:px-0 flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+        <div className="flex flex-col md:flex-row gap-4 mb-4 justify-center items-center">
         <div className="flex justify-between items-center space-x-3 bg-[#E9EDF1] font-bold px-4 py-2 rounded-lg ">
             <select
               name="cohort"
@@ -111,8 +111,8 @@ const StudentList = () => {
       {loading ? (
         <p className="text-gray-600">Loading...</p>
       ) : (
-        <div className="">
-          <table className="table-auto w-full bg-white">
+        <div className="overflow-x-scroll">
+          <table className="table-auto bg-white">
             <thead>
               <tr className=" text-gray-700">
                 <th className="px-4 py-2 text-left">Student Name</th>
@@ -132,14 +132,14 @@ const StudentList = () => {
                     title="Click to modify the record"
                 >
                   <td className="px-4 py-2">{student.name}</td>
-                  <td className="px-4 py-2">{student.cohort}</td>
+                  <td className="px-4 py-2 whitespace-nowrap">{student.cohort}</td>
                   <td className="px-4 py-2">
                     <div className="flex flex-wrap gap-2">
                       {student.courses ? (
                         student.courses.map((course, index) => (
                           <span
                             key={index}
-                            className="flex items-center bg-gray-100 text-sm text-gray-600 px-2 py-1 rounded-md"
+                            className="flex items-center bg-gray-100 text-sm text-gray-600 px-2 py-1 whitespace-nowrap rounded-md"
                           >
                             <img src={courseProfile} width={20} alt="" className="mr-1" />{course}
                           </span>

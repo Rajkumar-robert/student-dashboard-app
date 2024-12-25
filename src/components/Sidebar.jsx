@@ -4,12 +4,15 @@ import logo from "../assets/quyl.png";
 import { RiBookMarkedLine, RiBookReadFill, RiDashboard3Line } from "react-icons/ri";
 import { TbHelp, TbSettings2 } from "react-icons/tb";
 import { HiOutlineChartPie } from "react-icons/hi";
-import profile from "../assets/profile.png";
 
-const Sidebar = () => {
+const Sidebar = ({ setIsOpened }) => {
   const location = useLocation(); // Get the current location
 
   const isActive = (path) => location.pathname === path;
+
+  const handleLinkClick = () => {
+    setIsOpened(true); // Close the sidebar when a link is clicked
+  };
 
   return (
     <div className="pt-16 md:pt-0 fixed top-0 left-0 h-full w-64 bg-white text-white flex flex-col p-4">
@@ -23,6 +26,7 @@ const Sidebar = () => {
           <div className="flex flex-col space-y-6">
             <Link
               to="/dashboard"
+              onClick={handleLinkClick}
               className={`flex items-center space-x-4 p-2 rounded-md cursor-pointer text-black ${isActive("/dashboard") ? "bg-gray-200" : "hover:bg-gray-100"
                 }`}
             >
@@ -31,6 +35,7 @@ const Sidebar = () => {
             </Link>
             <Link
               to="/"
+              onClick={handleLinkClick}
               className={`flex items-center space-x-4 p-2 rounded-md cursor-pointer text-black ${isActive("/") ? "bg-gray-200" : "hover:bg-gray-100"
                 }`}
             >
@@ -39,6 +44,7 @@ const Sidebar = () => {
             </Link>
             <Link
               to="/chapters"
+              onClick={handleLinkClick}
               className={`flex items-center space-x-4 p-2 rounded-md cursor-pointer text-black ${isActive("/chapters") ? "bg-gray-200" : "hover:bg-gray-100"
                 }`}
             >
@@ -47,6 +53,7 @@ const Sidebar = () => {
             </Link>
             <Link
               to="/help"
+              onClick={handleLinkClick}
               className={`flex items-center space-x-4 p-2 rounded-md cursor-pointer text-black ${isActive("/help") ? "bg-gray-200" : "hover:bg-gray-100"
                 }`}
             >
@@ -55,6 +62,7 @@ const Sidebar = () => {
             </Link>
             <Link
               to="/reports"
+              onClick={handleLinkClick}
               className={`flex items-center space-x-4 p-2 rounded-md cursor-pointer text-black ${isActive("/reports") ? "bg-gray-200" : "hover:bg-gray-100"
                 }`}
             >
@@ -63,6 +71,7 @@ const Sidebar = () => {
             </Link>
             <Link
               to="/settings"
+              onClick={handleLinkClick}
               className={`flex items-center space-x-4 p-2 rounded-md cursor-pointer text-black ${isActive("/settings") ? "bg-gray-200" : "hover:bg-gray-100"
                 }`}
             >
@@ -72,7 +81,6 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
